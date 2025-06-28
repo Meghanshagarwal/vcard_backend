@@ -2,7 +2,13 @@
   "version": 2,
   "functions": {
     "api/upload.js": {
-      "runtime": "vercel-node@3.1.0"
+      "runtime": "@vercel/node"
     }
-  }
+  },
+  "routes": [
+    {
+      "src": "/api/upload",
+      "dest": "api/upload.js"
+    }
+  ]
 }
