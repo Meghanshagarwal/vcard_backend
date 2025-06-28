@@ -57,7 +57,7 @@ async function connectToMongo() {
   return client.db("vcards_icul");
 }
 
-app.post("/api/upload", upload.single("file"), async (req, res) => {
+app.post("/", upload.single("file"), async (req, res) => {
   if (!req.file) return res.status(400).json({ error: "No file uploaded" });
 
   try {
