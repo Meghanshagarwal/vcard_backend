@@ -57,7 +57,7 @@ async function connectToMongo() {
   return client.db("vcards_icul");
 }
 
-app.post("/upload", upload.single("file"), async (req, res) => {
+app.post("/api/upload", upload.single("file"), async (req, res) => {
   if (!req.file) return res.status(400).json({ error: "No file uploaded" });
 
   try {
@@ -105,4 +105,4 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   }
 });
 
-module.exports.handler = serverless(app);
+module.exports = serverless(app);
