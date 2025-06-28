@@ -89,16 +89,17 @@ app.post("/", upload.single("file"), async (req, res) => {
       totalContacts: parseResult.data.length,
       processedContacts: 0,
       status: "uploaded",
-      rawData: JSON.stringify(parseResult.data),
+      rawData: JSON.stringify(limitedData),
+totalContacts: limitedData.length,
       createdAt: new Date(),
     });
 
     res.json({
-      batchId,
-      headers: parseResult.headers,
-      preview: parseResult.data.slice(0, 5),
-      totalContacts: parseResult.data.length,
-    });
+        batchId,
+        headers: parseResult.headers,
+        preview: limitedData.slice(0, 5),
+        totalContacts: limitedData.length,
+      });
   } catch (error) {
     console.error("Upload error:", error);
     res.status(500).json({ error: "Internal server error" });
